@@ -12,6 +12,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
 	<!-- 
 
+
 	由于使用spring和mybatis整合的mapper扫描器，这里可以不用配置了
 	<mappers>
 		<package name="cn.itcast.ssm.mapper" />

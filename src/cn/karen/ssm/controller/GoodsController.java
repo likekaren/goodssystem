@@ -90,7 +90,7 @@ public class GoodsController {
 		//调用 service查询商品信息
 		GoodsCustom goodsCustom = goodsService.findGoodsById(id);
 		
-		model.addAttribute("good", goodsCustom);
+		model.addAttribute("goods", goodsCustom);
 		
 		
 		//return "editItem_2";

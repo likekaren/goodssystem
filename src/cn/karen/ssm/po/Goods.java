@@ -15,8 +15,6 @@ public class Goods {
 
     private Integer goodsnum;
 
-    private Integer goodsid;
-
     public Integer getId() {
         return id;
     }
@@ -71,13 +69,5 @@ public class Goods {
 
     public void setGoodsnum(Integer goodsnum) {
         this.goodsnum = goodsnum;
-    }
-
-    public Integer getGoodsid() {
-        return goodsid;
-    }
-
-    public void setGoodsid(Integer goodsid) {
-        this.goodsid = goodsid;
     }
 }

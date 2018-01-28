@@ -31,7 +31,7 @@
 	<bean
 		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
 		<!-- 在webBindingInitializer中注入自定义属性编辑器、自定义转换器 -->
-		<property name="webBindingInitializer" ref="customBinder"></property>
+		
 	</bean>
 
 	<!-- 配置视图解析器 要求将jstl的包加到classpath -->
@@ -43,33 +43,5 @@
 	</bean>
 
 	
-	<!-- 自定义webBinder -->
-	<bean id="customBinder"
-		class="org.springframework.web.bind.support.ConfigurableWebBindingInitializer">
-		<!-- 使用converter进行参数转 -->
-		<property name="conversionService" ref="conversionService" />
-		
-		<!-- propertyEditorRegistrars用于属性编辑器 -->
-		<!-- <property name="propertyEditorRegistrars">
-			<list>
-				<ref bean="customPropertyEditor" />
-			</list>
-		</property> -->
-	</bean>
-	
-	<!-- 注册属性编辑器 -->
-	<bean id="customPropertyEditor" class="cn.karen.ssm.controller.propertyeditor.CustomPropertyEditor"></bean>
-	
-	<!-- 转换器 -->
-    <bean id="conversionService"
-		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
-		<property name="converters">
-			<list>
-				<bean class="cn.karen.ssm.controller.converter.CustomDateConverter"/>
-				<bean class="cn.karen.ssm.controller.converter.StringTrimConverter"/>
-			</list>
-		</property>
-	</bean> 
-
 
 </beans>

@@ -27,14 +27,15 @@
 	<td>商品数量</td>
 	<td>操作</td>
 </tr>
-<c:forEach items="${itemsList }" var="item">
+<c:forEach items="${goodsList }" var="goods">
 <tr>
-	<td>${item.name }</td>
-	<td>${item.price }</td>
-	<td><fmt:formatDate value="${item.createtime}" pattern="yyyy-MM-dd HH-mm-ss"/></td>
-	<td>${item.detail }</td>
-	
-	<td><a href="${pageContext.request.contextPath }/item/editItem.action?id=${item.id}">修改</a></td>
+	<td>${goods.goodsname }</td>
+	<td>${goods.userid }</td>
+	<td>${goods.depotid }</td>
+	<td>${goods.areaid }</td>
+	<td>${goods.zoneid }</td>
+	<td>${goods.goodsnum }</td>
+	<td><a href="${pageContext.request.contextPath }/goods/editGoods.action?id=${goods.id}">修改</a></td>
 
 </tr>
 </c:forEach>

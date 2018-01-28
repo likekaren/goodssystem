@@ -543,66 +543,6 @@ public class GoodsExample {
             addCriterion("goodsnum not between", value1, value2, "goodsnum");
             return (Criteria) this;
         }
-
-        public Criteria andGoodsidIsNull() {
-            addCriterion("goodsid is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andGoodsidIsNotNull() {
-            addCriterion("goodsid is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andGoodsidEqualTo(Integer value) {
-            addCriterion("goodsid =", value, "goodsid");
-            return (Criteria) this;
-        }
-
-        public Criteria andGoodsidNotEqualTo(Integer value) {
-            addCriterion("goodsid <>", value, "goodsid");
-            return (Criteria) this;
-        }
-
-        public Criteria andGoodsidGreaterThan(Integer value) {
-            addCriterion("goodsid >", value, "goodsid");
-            return (Criteria) this;
-        }
-
-        public Criteria andGoodsidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("goodsid >=", value, "goodsid");
-            return (Criteria) this;
-        }
-
-        public Criteria andGoodsidLessThan(Integer value) {
-            addCriterion("goodsid <", value, "goodsid");
-            return (Criteria) this;
-        }
-
-        public Criteria andGoodsidLessThanOrEqualTo(Integer value) {
-            addCriterion("goodsid <=", value, "goodsid");
-            return (Criteria) this;
-        }
-
-        public Criteria andGoodsidIn(List<Integer> values) {
-            addCriterion("goodsid in", values, "goodsid");
-            return (Criteria) this;
-        }
-
-        public Criteria andGoodsidNotIn(List<Integer> values) {
-            addCriterion("goodsid not in", values, "goodsid");
-            return (Criteria) this;
-        }
-
-        public Criteria andGoodsidBetween(Integer value1, Integer value2) {
-            addCriterion("goodsid between", value1, value2, "goodsid");
-            return (Criteria) this;
-        }
-
-        public Criteria andGoodsidNotBetween(Integer value1, Integer value2) {
-            addCriterion("goodsid not between", value1, value2, "goodsid");
-            return (Criteria) this;
-        }
     }
 
     public static class Criteria extends GeneratedCriteria {
