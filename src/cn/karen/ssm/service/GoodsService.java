@@ -2,6 +2,9 @@ package cn.karen.ssm.service;
 
 import java.util.List;
 
+
+
+
 import cn.karen.ssm.po.GoodsCustom;
 import cn.karen.ssm.po.GoodsQueryVo;
 
@@ -35,4 +38,16 @@ public interface GoodsService {
 	 */
 	public void updateGoods(Integer id,GoodsCustom goodsCustom)throws Exception;
 
+	
+	
+	//商品添加
+	
+	public void insertGoods(GoodsCustom goodsCustom) throws Exception;
+	//获取最大的id
+	public Integer getMaxId() throws Exception;
+
+	//删除
+	public void deleteGoods(Integer id);
+
+	public List<GoodsCustom> findGoodsResultList(GoodsCustom goodsCustom);
 }

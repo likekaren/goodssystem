@@ -29,4 +29,37 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 
+
+	<select id="getMaxId" 
+			resultType="java.lang.Integer">
+		select max(id) from goods;
+		
+	</select>
+	
+	<select id="findGoodsResultList" parameterType="cn.karen.ssm.po.GoodsCustom" 
+			resultType="cn.karen.ssm.po.GoodsCustom">
+			SELECT * FROM goods where 1=1
+			<if test="goodsname!=null and goodsname!=''">
+				and  goodsname = #{goodsname}
+			</if>
+			<if test="userid!=null">
+				and  userid = #{userid}
+			</if>
+			<if test="depotid!=null">
+				and  depotid = #{depotid}
+			</if>
+			<if test="areaid!=null">
+				and  areaid = #{areaid}
+			</if>
+			<!--<if test="zoneid!=null">
+				and  zoneid = #{zoneid}
+			</if>-->
+			
+		
+		
+		
+	</select>
+	
+	
+	
 </mapper>

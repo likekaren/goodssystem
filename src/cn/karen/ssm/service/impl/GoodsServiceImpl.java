@@ -4,8 +4,14 @@ import java.util.List;
 
 
 
+
+
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+
+
+
 
 
 import cn.karen.ssm.mapper.GoodsMapper;
@@ -57,6 +63,39 @@ public class GoodsServiceImpl implements GoodsService {
 		//itemsMapper.updateByPrimaryKey(itemsCustom);
 		goodsMapper.updateByPrimaryKey(goodsCustom);
 		
+	}
+	public void insertGoods(GoodsCustom goodsCustom) throws Exception {
+		//写业务代码
+		
+		//对于关键业务数据的非空校验
+	
+		//itemsMapper.updateByPrimaryKey(itemsCustom);
+		goodsMapper.insert(goodsCustom);
+		
+	}
+
+	@Override
+	public Integer getMaxId() throws Exception {
+		// TODO Auto-generated method stub
+		return goodsMapperCustom.getMaxId();
+	}
+
+	@Override
+	public void deleteGoods(Integer id) {
+		// TODO Auto-generated method stub
+		goodsMapper.deleteByPrimaryKey(id);
+	}
+
+	@Override
+	public List<GoodsCustom> findGoodsResultList(GoodsCustom goodsCustom) {
+		// TODO Auto-generated method stub
+		try {
+			return goodsMapperCustom.findGoodsResultList(goodsCustom);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

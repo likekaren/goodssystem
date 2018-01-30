@@ -1,13 +1,20 @@
 package cn.karen.ssm.controller;
 
+import java.awt.print.Pageable;
 import java.text.SimpleDateFormat;
+
 
 
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+
+
+
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -17,10 +24,28 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 
+
+
+
+
+
+
+
+
+
+
+
+import cn.karen.ssm.mapper.GoodsMapper;
+import cn.karen.ssm.mapper.GoodsMapperCustom;
+import cn.karen.ssm.po.Goods;
 import cn.karen.ssm.po.GoodsCustom;
+import cn.karen.ssm.po.GoodsExample;
+import cn.karen.ssm.po.GoodsExample.Criterion;
+import cn.karen.ssm.po.GoodsQueryVo;
 import cn.karen.ssm.service.GoodsService;
 
 
@@ -48,6 +73,8 @@ public class GoodsController {
 	//注入service
 	@Autowired
 	private GoodsService goodsService;
+	
+	private GoodsMapper goodsMapper;
 
 	@RequestMapping("/queryGoods")
 	public ModelAndView queryGoods(HttpServletRequest request) throws Exception {
@@ -139,7 +166,70 @@ public class GoodsController {
 //		binder.registerCustomEditor(Date.class, new CustomDateEditor(
 //				new SimpleDateFormat("yyyy-MM-dd HH-mm-ss"), true));
 //	}
-
+	// 添加商品信息
+		@RequestMapping(value="/addGoods",method={RequestMethod.GET})
 	
+		public String addGoods(Model model) throws Exception {
+//			GoodsExample example = new GoodsExample();
+//			GoodsExample.Criteria criteria = example.createCriteria();
+//			List<Goods> gdList = goodsMapper.selectByExample(example);
+//			model.addAttribute("gdList", gdList);
+//			GoodsCustom goodsCustom = new GoodsCustom();
+//			model.addAttribute("goods",goodsCustom);
+			
+			return "addGoods";
+		}
 
+		// 添加提交
+		@RequestMapping("/addGoodsSubmit")
+		public String addGoodsSubmit(GoodsCustom goodsCustom)
+				throws Exception {
+			
+			int id = goodsService.getMaxId()+1;
+			goodsCustom.setId(id);
+			//GoodsCustom custom = goodsQueryVo.getGoodsCustom();
+				goodsService.insertGoods(goodsCustom);
+				return "redirect:queryGoods.action";
+
+		}
+	
+		//商品删除
+		@RequestMapping("/deleteGoods")
+		public String deleteGoods(Integer id) throws Exception{
+			
+			goodsService.deleteGoods(id);
+			
+			return "redirect:queryGoods.action";
+		}
+		//商品条件查询
+		@RequestMapping(value="/tjqueryGoods",method={RequestMethod.POST})
+		public String tjqueryGoods(Model model,GoodsCustom goodsCustom)throws Exception{
+			if(goodsCustom.getGoodsname()!= null|| goodsCustom.getUserid()!= null || goodsCustom.getDepotid()!=null
+					|| goodsCustom.getAreaid()!= null || goodsCustom.getZoneid()!=null){
+				List<GoodsCustom>resultList = goodsService.findGoodsResultList(goodsCustom);
+				
+//				ModelAndView modelAndView = new ModelAndView();
+//				modelAndView.addObject("goodsList", resultList);
+				
+				
+				
+				model.addAttribute("goodsList2", resultList);
+				
+				//回显
+				model.addAttribute("goodsname",goodsCustom.getGoodsname());
+				model.addAttribute("userid",goodsCustom.getUserid());
+				model.addAttribute("depotid",goodsCustom.getDepotid());
+				model.addAttribute("areid",goodsCustom.getAreaid());
+				model.addAttribute("zoneid",goodsCustom.getZoneid());
+				
+//				((ModelAndView) model).setViewName("goodsList2");
+
+				
+				
+			}
+			
+			return "goodsList2";
+			
+		}
+		
 }
