@@ -11,6 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 -->
 	<sql id="query_goods_where">
 		<if test="goodsCustom!=null">
+			
 			<if test="goodsCustom.name!=null and goodsCustom.name!=''">
 				and  name like '%${goodsCustom.goodsname}%'
 			</if>
@@ -51,15 +52,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="areaid!=null">
 				and  areaid = #{areaid}
 			</if>
-			<!--<if test="zoneid!=null">
+			<if test="zoneid!=null and zoneid!=''">
 				and  zoneid = #{zoneid}
-			</if>-->
+			</if>
 			
 		
 		
 		
 	</select>
-	
 	
 	
 </mapper>
