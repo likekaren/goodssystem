@@ -26,18 +26,18 @@
 					<TR>
 					
 						<TD class="left">商品名称：</td>
-						<td><INPUT type="text" name="Goodsname" /></TD>
+						<td><INPUT type="text" name="Goodsname" value="${goods.goodsname}"/></TD>
 						<TD class="left">管理员编号：</TD>
-						<td><INPUT type="text" name="Userid" /></TD>
+						<td><INPUT type="text" name="Userid" value="${goods.userid}"/></TD>
 
 						<TD class="left">仓库编号：</TD>
-						<td><INPUT type="text" name="Depotid" /></TD>
+						<td><INPUT type="text" name="Depotid" value="${goods.depotid}"/></TD>
 
 						<TD class="left">区域编号：</TD>
-						<td><INPUT type="text" name="Areaid" /></TD>
+						<td><INPUT type="text" name="Areaid" value="${goods.areaid}"/></TD>
 						
 						<TD class="left">货架编号：</TD>
-						<td><INPUT type="text" name="Zoneid" /></TD>
+						<td><INPUT type="text" name="Zoneid" value="${goods.zoneid}"/></TD>
 					
 						<td colspan="2" align="center"><input type="submit" value="搜索"/>
 					

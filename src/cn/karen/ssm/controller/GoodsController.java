@@ -213,14 +213,14 @@ public class GoodsController {
 				
 				
 				
-				model.addAttribute("goodsList2", resultList);
+				model.addAttribute("goodsList", resultList);
 				
 				//回显
-				model.addAttribute("goodsname",goodsCustom.getGoodsname());
-				model.addAttribute("userid",goodsCustom.getUserid());
-				model.addAttribute("depotid",goodsCustom.getDepotid());
-				model.addAttribute("areid",goodsCustom.getAreaid());
-				model.addAttribute("zoneid",goodsCustom.getZoneid());
+				//model.addAttribute("goodsname",goodsCustom.getGoodsname());
+				model.addAttribute("goods",goodsCustom);
+				//model.addAttribute("depotid",goodsCustom.getDepotid());
+				//model.addAttribute("areid",goodsCustom.getAreaid());
+				//model.addAttribute("zoneid",goodsCustom.getZoneid());
 				
 //				((ModelAndView) model).setViewName("goodsList2");
 
@@ -228,7 +228,7 @@ public class GoodsController {
 				
 			}
 			
-			return "goodsList2";
+			return "goodsList";
 			
 		}
 		
