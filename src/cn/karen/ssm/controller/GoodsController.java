@@ -52,17 +52,17 @@ import cn.karen.ssm.service.GoodsService;
 /**
  * 
  * <p>
- * Title: ItemsController
+ * Title: GoodsController
  * </p>
  * <p>
  * Description:商品管理
  * </p>
  * <p>
- * Company: www.itcast.com
+ * Company: www.karen.com
  * </p>
  * 
- * @author 传智.燕青
- * @date 2015-3-20下午3:04:57
+ * @author 李轲
+ * @date 
  * @version 1.0
  */
 @Controller
@@ -216,13 +216,9 @@ public class GoodsController {
 				model.addAttribute("goodsList", resultList);
 				
 				//回显
-				//model.addAttribute("goodsname",goodsCustom.getGoodsname());
-				model.addAttribute("goods",goodsCustom);
-				//model.addAttribute("depotid",goodsCustom.getDepotid());
-				//model.addAttribute("areid",goodsCustom.getAreaid());
-				//model.addAttribute("zoneid",goodsCustom.getZoneid());
 				
-//				((ModelAndView) model).setViewName("goodsList2");
+				model.addAttribute("goods",goodsCustom);
+				
 
 				
 				
