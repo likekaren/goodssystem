@@ -37,7 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 	</select>
 	
-	<select id="findGoodsResultList" parameterType="cn.karen.ssm.po.GoodsCustom" 
+	<select id="findGoodsList" parameterType="cn.karen.ssm.po.GoodsQueryVo" 
 			resultType="cn.karen.ssm.po.GoodsCustom">
 			SELECT * FROM goods where 1=1
 			<if test="goodsname!=null and goodsname!=''">

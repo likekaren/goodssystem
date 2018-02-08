@@ -14,12 +14,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
+<link rel="stylesheet" type="text/css"
+	href="${baseurl}/css/jquery.grid.css" />
+<link rel="stylesheet" type="text/css"
+	href="${baseurl}/jEasyUIcustom/uimaker/easyui.css">
+<link rel="stylesheet" type="text/css"
+	href="${baseurl}/jEasyUIcustom/uimaker/icon.css">
+<link rel="stylesheet" type="text/css"
+	href="${baseurl}css/skin_/table.css" />
 <title>查询商品列表</title>
 </head>
 <body> 
 <form id="itemForm" action="${pageContext.request.contextPath }/goods/tjqueryGoods.action" method="post" >
 <!-- 查询条件 -->
-
+<div>条件查询：</div>
 			<TABLE class="table_search">
 				<TBODY>
 				
@@ -40,14 +48,14 @@
 						<td><INPUT type="text" name="Zoneid" value="${goods.zoneid}"/></TD>
 					
 						<td colspan="2" align="center"><input type="submit" value="搜索"/>
-					
+						
 						
 					
 				</TBODY>
 			</TABLE>
 			</form>	
 <form action="${pageContext.request.contextPath }/goods/queryGoods.action" method="post">
-条件查询：
+
 
 
 <%-- <td><a href="${pageContext.request.contextPath }/goods/editqueryGoods.action">条件查询</a></td> --%>
@@ -58,10 +66,10 @@
 
 
 
-<td><a href="${pageContext.request.contextPath }/goods/addGoods.action">添加</a></td>
+<%-- <div><a href="${pageContext.request.contextPath }/goods/addGoods.action">添加</a></div> --%>
+<input type="button" onclick="location.href='addGoods.action'" value="添加"/>
 
-
-商品列表：
+<div>商品列表：</div>
 <table width="100%" border=1>
 <tr>
 	<td>商品名称</td>
