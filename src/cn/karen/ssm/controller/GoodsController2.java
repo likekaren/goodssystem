@@ -1,73 +1,22 @@
 package cn.karen.ssm.controller;
 
-import java.awt.print.Pageable;
-
-
-import java.text.SimpleDateFormat;
-
-
-
-
-import java.util.Date;
 import java.util.List;
-import java.util.UUID;
-
-import javax.servlet.http.HttpServletRequest;
-
-
-
-
-
-
-
-
-
-
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-import com.github.pagehelper.PageInfo;
-
 
 import cn.karen.ssm.mapper.GoodsMapper;
-import cn.karen.ssm.mapper.GoodsMapperCustom;
-import cn.karen.ssm.po.Goods;
 import cn.karen.ssm.po.GoodsCustom;
-import cn.karen.ssm.po.GoodsExample;
-import cn.karen.ssm.po.GoodsExample.Criterion;
 import cn.karen.ssm.po.GoodsQueryVo;
 import cn.karen.ssm.po.PageQuery;
 import cn.karen.ssm.result.DataGridResultInfo;
 import cn.karen.ssm.service.GoodsService;
 
+import com.github.pagehelper.PageInfo;
 
 /**
  * 
@@ -108,38 +57,25 @@ public class GoodsController2 {
 		// 非空校验
 		goodsQueryVo = goodsQueryVo != null ? goodsQueryVo
 				: new GoodsQueryVo();
-
 		// 获取 goodsCustom
 		GoodsCustom goodsCustom = goodsQueryVo.getGoodsCustom();
 		// 非空 校验
 		goodsCustom = goodsCustom != null ? goodsCustom
 				: new GoodsCustom();
-		
-		
 		//分页支持
-
-		PageQuery pageQuery = new PageQuery(1, 6);
+		PageQuery pageQuery = new PageQuery(page, rows);
 		goodsQueryVo.setPageQuery(pageQuery);
 		// 分页查询，向sysuserQueryVo中传入pageQuery
 		List<GoodsCustom> list = goodsService
 				.findGoodsList(goodsQueryVo);
-		
-		
-		
-		
 		PageInfo<GoodsCustom> pageInfo = new PageInfo<>(list);
 		int total = (int) pageInfo.getTotal();
-
 		DataGridResultInfo dataGridResultInfo = new DataGridResultInfo();
 		// 填充 total
 		dataGridResultInfo.setTotal(total);
 		// 填充 rows
 		dataGridResultInfo.setRows(list);
 		return dataGridResultInfo;
-		
-		
-		
-		
 	}
 	
 	//方法返回 字符串，字符串就是逻辑视图名，Model作用是将数据填充到request域，在页面展示

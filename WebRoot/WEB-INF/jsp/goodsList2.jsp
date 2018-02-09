@@ -4,11 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
 <%@ include file="/WEB-INF/jsp/base/tag.jsp"%>
 <%@ include file="/WEB-INF/jsp/base/common_js.jsp"%>
-<%@page import="java.net.InetAddress"%>
-<%
-	String localurl = InetAddress.getLocalHost().getHostAddress()
-			.toString();
-%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>

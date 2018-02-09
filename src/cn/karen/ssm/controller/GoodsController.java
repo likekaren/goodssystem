@@ -206,18 +206,18 @@ public class GoodsController {
 		public String tjqueryGoods(Model model,GoodsCustom goodsCustom)throws Exception{
 			if(goodsCustom.getGoodsname()!= null|| goodsCustom.getUserid()!= null || goodsCustom.getDepotid()!=null
 					|| goodsCustom.getAreaid()!= null || goodsCustom.getZoneid()!=null){
-				List<GoodsCustom>resultList = goodsService.findGoodsResultList(goodsCustom);
+				//List<GoodsCustom>resultList = goodsService.findGoodsResultList(goodsCustom);
 				
 //				ModelAndView modelAndView = new ModelAndView();
 //				modelAndView.addObject("goodsList", resultList);
 				
 				
 				
-				model.addAttribute("goodsList", resultList);
+				/*model.addAttribute("goodsList", resultList);
 				
 				//回显
 				
-				model.addAttribute("goods",goodsCustom);
+				model.addAttribute("goods",goodsCustom);*/
 				
 
 				
