@@ -8,6 +8,10 @@ import java.util.List;
 
 
 
+
+
+
+import cn.karen.ssm.po.Goods;
 import cn.karen.ssm.po.GoodsCustom;
 import cn.karen.ssm.po.GoodsQueryVo;
 
@@ -23,6 +27,7 @@ import cn.karen.ssm.po.GoodsQueryVo;
  */
 public interface GoodsService {
 	
+	int findGoodsCount(GoodsQueryVo goodsQueryVo) throws Exception;
 	//商品查询列表
 	public List<GoodsCustom> findGoodsList(GoodsQueryVo goodsQueryVo)
 			throws Exception;
@@ -52,5 +57,5 @@ public interface GoodsService {
 	//删除
 	public void deleteGoods(Integer id);
 
-	public List<GoodsCustom> findGoodsResultList(GoodsCustom goodsCustom);
+	
 }

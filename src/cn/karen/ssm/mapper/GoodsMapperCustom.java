@@ -3,6 +3,10 @@ package cn.karen.ssm.mapper;
 import java.util.List;
 
 
+
+
+
+
 import cn.karen.ssm.po.GoodsCustom;
 import cn.karen.ssm.po.GoodsQueryVo;
 
@@ -15,7 +19,7 @@ public interface GoodsMapperCustom {
 	//获取最大的id
 		public  Integer getMaxId() throws Exception;
 	
-	//商品条件查询结果列表
-		public List<GoodsCustom> findGoodsResultList(GoodsCustom goodsCustom)
+		// 查询总条数
+		public int findGoodsCount(GoodsQueryVo goodsQueryVo)
 				throws Exception;
 }

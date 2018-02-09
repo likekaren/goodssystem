@@ -8,6 +8,8 @@ import java.util.List;
 
 
 
+
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -15,6 +17,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 
 
+
+
+
+import com.github.pagehelper.PageHelper;
 
 import cn.karen.ssm.mapper.GoodsMapper;
 import cn.karen.ssm.mapper.GoodsMapperCustom;
@@ -31,12 +37,17 @@ public class GoodsServiceImpl implements GoodsService {
 	
 	@Autowired
 	private GoodsMapper goodsMapper;
+	
+	
 
 	//商品查询列表
 	@Override
 	public List<GoodsCustom> findGoodsList(GoodsQueryVo goodsQueryVo)
 			throws Exception {
-		
+		int page = goodsQueryVo.getPageQuery().getPage();
+		int rows = goodsQueryVo.getPageQuery().getRows();
+		// 再 执行 sql 代码前面 加入 PageHelper。并给PageHelper设置 page 和 rows
+		PageHelper.startPage(page, rows);
 		return goodsMapperCustom.findGoodsList(goodsQueryVo);
 	}
 
@@ -89,16 +100,14 @@ public class GoodsServiceImpl implements GoodsService {
 	}
 
 	@Override
-	public List<GoodsCustom> findGoodsResultList(GoodsCustom goodsCustom) {
+	public int findGoodsCount(GoodsQueryVo goodsQueryVo) throws Exception {
 		// TODO Auto-generated method stub
-		try {
-			return goodsMapperCustom.findGoodsResultList(goodsCustom);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
+		return goodsMapperCustom.findGoodsCount(goodsQueryVo);
 	}
+
+
+
+
 
 
 }

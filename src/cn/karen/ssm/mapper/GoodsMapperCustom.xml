@@ -6,30 +6,50 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 商品查询的sql片段
 
+
 	建议是以单表为单位定义查询条件
 	建议将常用的查询条件都写出来
 	 -->
 	<sql id="query_goods_where">
 		<if test="goodsCustom!=null">
-			
-			<if test="goodsCustom.name!=null and goodsCustom.name!=''">
-				and  name like '%${goodsCustom.goodsname}%'
+			<if test="goodsCustom.goodsname!=null and goodsCustom.goodsname!=''">
+				and  goodsname = #{goodsCustom.goodsname}
 			</if>
-			<if test="goodsCustom.id!=null">
-				and  id = #{goodsCustom.id}
+			<if test="goodsCustom.userid!=null">
+				and  userid = #{goodsCustom.userid}
 			</if>
-		
+			<if test="goodsCustom.depotid!=null">
+				and  depotid = #{goodsCustom.depotid}
+			</if>
+			<if test="goodsCustom.areaid!=null">
+				and  areaid = #{goodsCustom.areaid}
+			</if>
+			<if test="goodsCustom.zoneid!=null and goodsCustom.zoneid!=''">
+				and  zoneid = #{goodsCustom.zoneid}
+			</if>
 		</if>
 		
 	</sql>
 	
+	<!-- 商品查询 -->
 	<select id="findGoodsList" parameterType="cn.karen.ssm.po.GoodsQueryVo" 
 			resultType="cn.karen.ssm.po.GoodsCustom">
 		SELECT * FROM goods 
+		<where>
+			<include refid="query_goods_where"/>
+		</where>
 		
 	</select>
-
-
+	<!-- 查询列表的总记录数 -->
+	<select id="findGoodsCount" parameterType="cn.karen.ssm.po.GoodsQueryVo" 
+			resultType="int">
+		SELECT count(*) FROM goods 
+		
+		<where>
+			<include refid="query_goods_where"/>
+		</where>
+		
+	</select>
 
 	<select id="getMaxId" 
 			resultType="java.lang.Integer">
@@ -37,29 +57,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		
 	</select>
 	
-	<select id="findGoodsList" parameterType="cn.karen.ssm.po.GoodsQueryVo" 
-			resultType="cn.karen.ssm.po.GoodsCustom">
-			SELECT * FROM goods where 1=1
-			<if test="goodsname!=null and goodsname!=''">
-				and  goodsname = #{goodsname}
-			</if>
-			<if test="userid!=null">
-				and  userid = #{userid}
-			</if>
-			<if test="depotid!=null">
-				and  depotid = #{depotid}
-			</if>
-			<if test="areaid!=null">
-				and  areaid = #{areaid}
-			</if>
-			<if test="zoneid!=null and zoneid!=''">
-				and  zoneid = #{zoneid}
-			</if>
-			
-		
-		
-		
-	</select>
+
 	
 	
 </mapper>

@@ -4,8 +4,9 @@ package cn.karen.ssm.po;
 public class GoodsQueryVo {
 
 	//商品信息
-	private GoodsCustom goodsCustom;
 	private PageQuery pageQuery;
+	private GoodsCustom goodsCustom;
+	
 	public GoodsCustom getGoodsCustom() {
 		return goodsCustom;
 	}
