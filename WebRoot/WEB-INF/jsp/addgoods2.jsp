@@ -32,7 +32,10 @@
 
 		message_alert(data);
 		//如果成功自动关闭
-		
+		if (data.resultInfo.type == "1") {
+			// 设置延迟关闭
+			setTimeout("close()",1000);
+		}
 	}
 	
 	//回显页面
@@ -55,39 +58,39 @@
 <body>
 	<form id="itemform" action="${baseurl}goodssystem/addgoodsSubmit.action"
 		method="post">
-		<!-- 更新在制品的id -->
-		<input type="hidden" name="id" value="${goods.id}" />
+		<!-- 更新商品的id -->
+		<input type="hidden" name="id" value="${goodsCustom.id}" />
 		<TBODY>
 			<table cellpadding="5">
 				<tr>
 					<td>商品名称:</td>
 					<td><input class="easyui-textbox" type="text" required
-						name="goodsname" value="${goods.goodsname}"
+						name="goodsCustom.goodsname" value="${goodsCustom.goodsname}"
 						style="height: 35px;"></input></td>
 
 					<td>管理员编号:</td>
 					<td><input class="easyui-textbox" type="text" required
-						name="userid" value="${goods.userid}"
+						name="goodsCustom.userid" value="${goodsCustom.userid}"
 						style="height: 35px;"></input></td>
 					<td>仓库编号:</td>
 					<td><input class="easyui-textbox" type="text"  required
-						name="depotid" value="${goods.depotid}"
+						name="goodsCustom.depotid" value="${goodsCustom.depotid}"
 						style="height: 35px;"></input></td>
 				</tr>
 				<tr>
 					<td>区域编号:</td>
 					<td><input class="easyui-textbox" type="text"  required
-						name="areaid" value="${goods.areaid}"
+						name="goodsCustom.areaid" value="${goodsCustom.areaid}"
 						style="height: 35px;"></input></td>
 
 					<td>货架编号:</td>
 					<td><input class="easyui-textbox" type="text" required
-						name="zoneid" value="${goods.zoneid}"
+						name="goodsCustom.zoneid" value="${goodsCustom.zoneid}"
 						style="height: 35px;"></input></td>
 		
 					<td>商品数量:</td>
 					<td><input class="easyui-textbox" type="text" required
-						name="goodsnum" value="${goods.goodsnum}"
+						name="goodsCustom.goodsnum" value="${goodsCustom.goodsnum}"
 						style="height: 35px;"></input></td>
 		 		</tr>
 				<tr>

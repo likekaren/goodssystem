@@ -2,6 +2,11 @@ package cn.karen.ssm.controller;
 
 import java.util.List;
 
+
+
+
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,11 +14,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
+
+
+
+import cn.karen.ssm.context.Config;
 import cn.karen.ssm.mapper.GoodsMapper;
 import cn.karen.ssm.po.GoodsCustom;
 import cn.karen.ssm.po.GoodsQueryVo;
 import cn.karen.ssm.po.PageQuery;
 import cn.karen.ssm.result.DataGridResultInfo;
+import cn.karen.ssm.result.ResultUtil;
+import cn.karen.ssm.result.SubmitResultInfo;
 import cn.karen.ssm.service.GoodsService;
 
 import com.github.pagehelper.PageInfo;
@@ -149,7 +161,7 @@ public class GoodsController2 {
 		}
 
 		// 添加提交
-		@RequestMapping("/addgoodsSubmit")
+		/*@RequestMapping("/addgoodsSubmit")
 		public String addGoodsSubmit(GoodsCustom goodsCustom)
 				throws Exception {
 			
@@ -159,7 +171,40 @@ public class GoodsController2 {
 				goodsService.insertGoods(goodsCustom);
 				return "redirect:querygoods.action";
 
+		}*/
+		/**
+		 * 添加设备台账 数据提交
+		 * 
+		 * @param 
+		 * @return
+		 * @throws Exception
+		 */
+		@RequestMapping("/addgoodsSubmit")
+		
+		public @ResponseBody
+		SubmitResultInfo addgoodSubmit(
+				GoodsQueryVo goodsQueryVo) throws Exception {
+			GoodsCustom goodscustom = goodsQueryVo
+					.getGoodsCustom();
+			if ( goodscustom.getGoodsname().equals("")
+					| goodscustom.getUserid().equals("")
+					| goodscustom.getDepotid().equals("")
+					| goodscustom.getAreaid().equals("")
+					| goodscustom.getZoneid().equals("")
+					| goodscustom.getGoodsnum().equals("")
+					) {
+				return ResultUtil.createSubmitResult(ResultUtil.createFail(
+						Config.MESSAGE, 236, null));
+			} else {
+				goodsService.insertGoods(goodsQueryVo
+						.getGoodsCustom());
+				return ResultUtil.createSubmitResult(ResultUtil.createSuccess(
+						Config.MESSAGE, 906, null));
+			}
 		}
+		
+		
+		
 	
 		//商品删除
 		@RequestMapping("/deleteGoods")

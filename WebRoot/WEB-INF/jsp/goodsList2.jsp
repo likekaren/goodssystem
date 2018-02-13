@@ -102,35 +102,43 @@
 			{
 				field : 'goodsname',//对应json中的key
 				title : '商品名称',
-				width : 200
+				width : 220
 			},
 			{
 				field : 'userid',//对应json中的key
 				title : '管理员编号 ',
-				width : 200
+				width : 220
 			},
 			{
 				field : 'depotid',//对应json中的key
 				title : '仓库编号',
-				width : 200
+				width : 220
 			},
 			{
 				field : 'areaid',//对应json中的key
 				title : '区域编号',
-				width : 200
+				width : 220
 			},
 			{
 				field : 'zoneid',//对应json中的key
 				title : '货架编号',
-				width : 200
+				width : 220
 			},
 			{
 				field : 'opt1',
 				title : '删除',
-				width : 80,
+				width : 110,
 				formatter : function(value, row, index) {
 					return "<a href=javascript:deletegoods('" + row.id
 							+ "')>删除</a>";
+				}
+			} ,{
+				field : 'opt2',
+				title : '修改',
+				width : 110,
+				formatter : function(value, row, index) {
+					return "<a href=javascript:editgoods('" + row.id
+							+ "')>修改</a>";
 				}
 			} ] ];
 
