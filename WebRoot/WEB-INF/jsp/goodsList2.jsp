@@ -200,6 +200,12 @@
 		createmodalwindow("添加商品信息", 850, 350,
 				'${baseurl}goodssystem/addgoods2.action');
 	}
+	//修改商品信息
+	function editgoods(id) {
+		//打开修改窗口
+		createmodalwindow("修改设备台账信息", 900,350,
+				'${baseurl}goodssystem/editgoods2.action?id=' + id);
+	}
 </script>
 
 </html>

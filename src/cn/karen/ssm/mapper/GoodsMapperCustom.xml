@@ -12,6 +12,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 -->
 	<sql id="query_goods_where">
 		<if test="goodsCustom!=null">
+			<if test="goodsCustom.id!=null and goodsCustom.id!=''">
+				and  id = #{goodsCustom.id}
+			</if>
 			<if test="goodsCustom.goodsname!=null and goodsCustom.goodsname!=''">
 				and  goodsname = #{goodsCustom.goodsname}
 			</if>

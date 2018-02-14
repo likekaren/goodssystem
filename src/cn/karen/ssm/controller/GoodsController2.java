@@ -7,12 +7,22 @@ import java.util.List;
 
 
 
+
+
+
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+
+
+
+
 
 
 
@@ -90,7 +100,9 @@ public class GoodsController2 {
 		return dataGridResultInfo;
 	}
 	
-	//方法返回 字符串，字符串就是逻辑视图名，Model作用是将数据填充到request域，在页面展示
+	
+	//修改商品信息
+	/*//方法返回 字符串，字符串就是逻辑视图名，Model作用是将数据填充到request域，在页面展示
 	@RequestMapping(value="/editGoods",method={RequestMethod.GET})
 	public String editGoods(Model model,Integer id)throws Exception{
 		
@@ -103,7 +115,18 @@ public class GoodsController2 {
 		//return "editItem_2";
 		return "editGoods";
 		
+	}*/
+	@RequestMapping("/editgoods2")
+	public String editgoods(Model model, Integer id) throws Exception {
+		// 通过id取出设备台账信息，传向页面
+		GoodsCustom goodsCustom = goodsService
+				.findGoodsById(id);
+		// 将数据写到 model 中去
+		model.addAttribute("goodsCustom", goodsCustom);
+
+		return "editgoods2";
 	}
+	
 	
 	//方法返回void
 //	@RequestMapping(value="/editItems",method={RequestMethod.GET})
@@ -125,7 +148,7 @@ public class GoodsController2 {
 	
 	//商品修改提交
 	
-	//itemsQueryVo是包装类型的pojo
+/*	//itemsQueryVo是包装类型的pojo
 	@RequestMapping("/editGoodsSubmit")
 //	public String editItemSubmit(Integer id,ItemsCustom itemsCustom,
 //			ItemsQueryVo itemsQueryVo)throws Exception{
@@ -137,6 +160,19 @@ public class GoodsController2 {
 		return "redirect:queryGoods.action";
 		//转发
 //		return "forward:queryItems.action";
+	}*/
+	
+	@RequestMapping("/editgoodssubmit")
+	
+	public @ResponseBody
+	SubmitResultInfo editgoodssubmit(Integer id,
+			GoodsQueryVo goodsQueryVo) throws Exception {
+		// 调用 service 方法，更新数据
+		this.goodsService.updateGoods(id,
+				goodsQueryVo.getGoodsCustom());
+
+		return ResultUtil.createSubmitResult(ResultUtil.createSuccess(
+				Config.MESSAGE, 906, new Object[] {}));
 	}
 	
 	//自定义属性编辑器
@@ -173,7 +209,7 @@ public class GoodsController2 {
 
 		}*/
 		/**
-		 * 添加设备台账 数据提交
+		 * 添加商品 数据提交
 		 * 
 		 * @param 
 		 * @return
@@ -207,12 +243,18 @@ public class GoodsController2 {
 		
 	
 		//商品删除
-		@RequestMapping("/deleteGoods")
-		public String deleteGoods(Integer id) throws Exception{
+		@RequestMapping("/deletegoods")
+		/*public String deleteGoods(Integer id) throws Exception{
 			
 			goodsService.deleteGoods(id);
 			
 			return "redirect:queryGoods.action";
+		}*/
+		public @ResponseBody SubmitResultInfo deletegoods(int id) throws Exception {
+
+			// 调用service
+			goodsService.deleteGoods(id);
+			return ResultUtil.createSubmitResult(ResultUtil.createSuccess(Config.MESSAGE, 906, null));
 		}
 		
 		
